@@ -1,5 +1,39 @@
 import React from "react";
 import "./App.css";
+//import { buildErrorMessage } from "vite";
+
+const skills = [
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#0000ff",
+  },
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA",
+  },
+  {
+    skill: "Javascript",
+    level: "advanced",
+    color: "#EFD81D",
+  },
+  {
+    skill: "Python",
+    level: "advanced",
+    color: "#E84F33",
+  },
+  {
+    skill: "MERN",
+    level: "beginner",
+    color: "#C3DCAF",
+  },
+  {
+    skill: "C++",
+    level: "intermidate",
+    color: "#2662EA ",
+  },
+];
 
 export default function App() {
   return (
@@ -33,19 +67,23 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="React" emoji="💪" color="blue" />
-      <Skill skill="HTML+CSS" emoji="💪" color="orange" />
-      <Skill skill="JavaScript" emoji="💪" color="yellow" />
-      <Skill skill="MERN" emoji="👶" color="orangered" />
+      {skills.map((skills) => (
+        <Skill skillObj={skills} />
+      ))}
     </div>
   );
 }
 
-function Skill(props) {
+function Skill({ skillObj }) {
   return (
-    <div className="skill" style={{ backgroundColor: props.color }}>
-      <span>{props.skill}</span>
-      <span>{props.emoji}</span>
+    <div className="skill" style={{ backgroundColor: skillObj.color }}>
+      <span>
+        {skillObj.level == "advanced"
+          ? skillObj.skill + "💪"
+          : skillObj.level == "intermidate"
+          ? skillObj.skill + "👍"
+          : skillObj.skill + "👶"}
+      </span>
     </div>
   );
 }
